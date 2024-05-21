@@ -16,7 +16,7 @@ import com.example.hr.repository.EmployeeEntityRepository;
 
 @Service
 @Repository(entity = Employee.class, id = String.class)
-@Adapter(value = EmployeeRepository.class)
+@Adapter(port = EmployeeRepository.class)
 public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	private final EmployeeEntityRepository employeeEntityRepository;
 	private final ModelMapper modelMapper;

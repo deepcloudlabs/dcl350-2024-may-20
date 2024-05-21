@@ -24,7 +24,7 @@ import com.example.hr.service.HrService;
 @RequestMapping("/employees")
 @CrossOrigin
 @Validated
-@Adapter(RestController.class)
+@Adapter(port = RestController.class)
 public class HrRestController {
 	private final HrService hrService;
 	
