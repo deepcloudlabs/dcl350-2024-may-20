@@ -1,24 +1,44 @@
-package com.example.hr.dto.request;
+package com.example.hr.entity;
 
 import java.util.List;
+import java.util.Objects;
 
-import com.example.hexagon.DTO;
-import com.example.hexagon.DTOType;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.FiatCurrency;
 import com.example.hr.domain.JobStyle;
 
-@DTO(DTOType.REQUEST)
-public class HireEmployeeRequest {
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "employees")
+public class EmployeeEntity {
+	@Id
+	@Column(name = "id")
 	private String identity;
+	@Column(name = "fname")
 	private String firstName;
+	@Column(name = "lname")
 	private String lastName;
+	@Column(name = "maas")
 	private double salary;
+	@Enumerated(EnumType.STRING)
 	private FiatCurrency currency;
 	private String iban;
+	@Column(name = "byear")
 	private int birthYear;
+	@Enumerated(EnumType.ORDINAL)
 	private JobStyle jobStyle;
-	private String photo;
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] photo;
+	@ElementCollection
 	private List<Department> departments;
 
 	public final String getIdentity() {
@@ -85,11 +105,11 @@ public class HireEmployeeRequest {
 		this.jobStyle = jobStyle;
 	}
 
-	public final String getPhoto() {
+	public final byte[] getPhoto() {
 		return photo;
 	}
 
-	public final void setPhoto(String photo) {
+	public final void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
@@ -102,8 +122,25 @@ public class HireEmployeeRequest {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(identity);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmployeeEntity other = (EmployeeEntity) obj;
+		return Objects.equals(identity, other.identity);
+	}
+
+	@Override
 	public String toString() {
-		return "HireEmployeeRequest [identity=" + identity + ", firstName=" + firstName + ", lastName=" + lastName
+		return "EmployeeEntity [identity=" + identity + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", salary=" + salary + ", currency=" + currency + ", iban=" + iban + ", birthYear=" + birthYear
 				+ ", jobStyle=" + jobStyle + ", departments=" + departments + "]";
 	}
