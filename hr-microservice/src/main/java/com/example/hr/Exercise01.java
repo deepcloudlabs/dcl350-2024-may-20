@@ -17,7 +17,7 @@ public class Exercise01 {
 		this.employeeEntityRepository.bulGetir(1980, 2000)
 		                             // LINQ + EF -> Criteria API 
 		                             .stream() // LINQ -> Stream API
-		                             .filter(emp -> emp.getSalary().amount() > 50_000)
+		                             .filter(emp -> emp.getSalary() > 50_000)
 		                             .filter(emp -> emp.getJobStyle().equals(JobStyle.FREELANCE))
 		                             .toList();
 	}
