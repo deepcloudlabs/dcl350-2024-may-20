@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 @Target(TYPE)
 @Inherited
 public @interface Adapter {
-	Class<?> value();
+	Class<?> port();
 }
