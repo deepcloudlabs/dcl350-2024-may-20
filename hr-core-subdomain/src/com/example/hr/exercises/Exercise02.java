@@ -8,7 +8,7 @@ import com.example.hr.domain.JobStyle;
 public class Exercise02 {
 
 	public static void main(String[] args) {
-		var jack = new Employee.Builder("11111111111")
+		var jack = new Employee.Builder("11111111110")
 				               .salary(65_000.0, FiatCurrency.EUR)
 				               .departments(Department.IT, Department.FINANCE)
 				               .iban("BE83456239889515")
