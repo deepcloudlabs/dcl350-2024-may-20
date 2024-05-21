@@ -41,83 +41,85 @@ public class EmployeeEntity {
 	@ElementCollection
 	private List<Department> departments;
 
-	public final String getIdentity() {
+	
+
+	public String getIdentity() {
 		return identity;
 	}
 
-	public final void setIdentity(String identity) {
+	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
 
-	public final String getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public final void setFirstName(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public final String getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public final void setLastName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public final double getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 
-	public final void setSalary(double salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
-	public final FiatCurrency getCurrency() {
+	public FiatCurrency getCurrency() {
 		return currency;
 	}
 
-	public final void setCurrency(FiatCurrency currency) {
+	public void setCurrency(FiatCurrency currency) {
 		this.currency = currency;
 	}
 
-	public final String getIban() {
+	public String getIban() {
 		return iban;
 	}
 
-	public final void setIban(String iban) {
+	public void setIban(String iban) {
 		this.iban = iban;
 	}
 
-	public final int getBirthYear() {
+	public int getBirthYear() {
 		return birthYear;
 	}
 
-	public final void setBirthYear(int birthYear) {
+	public void setBirthYear(int birthYear) {
 		this.birthYear = birthYear;
 	}
 
-	public final JobStyle getJobStyle() {
+	public JobStyle getJobStyle() {
 		return jobStyle;
 	}
 
-	public final void setJobStyle(JobStyle jobStyle) {
+	public void setJobStyle(JobStyle jobStyle) {
 		this.jobStyle = jobStyle;
 	}
 
-	public final byte[] getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public final void setPhoto(byte[] photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
-	public final List<Department> getDepartments() {
+	public List<Department> getDepartments() {
 		return departments;
 	}
 
-	public final void setDepartments(List<Department> departments) {
+	public void setDepartments(List<Department> departments) {
 		this.departments = departments;
 	}
 
