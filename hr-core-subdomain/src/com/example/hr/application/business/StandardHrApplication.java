@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.example.hr.application.HrApplication;
 import com.example.hr.domain.Employee;
 import com.example.hr.domain.TcKimlikNo;
+import com.example.hr.domain.event.EmployeeFiredEvent;
 import com.example.hr.domain.event.EmployeeHiredEvent;
 import com.example.hr.domain.event.HrBaseEvent;
 import com.example.hr.infrastructure.messaging.EventPublisher;
@@ -41,6 +42,8 @@ public class StandardHrApplication implements HrApplication {
 		
 		// finally removing the employee
 		employeeRepository.removeEmployee(employee);
+		var event = new EmployeeFiredEvent(employee); 
+		eventPublisher.publishEvent(event);
 		return employee;
 	}
 
