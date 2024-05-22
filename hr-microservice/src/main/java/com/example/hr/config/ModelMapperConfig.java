@@ -24,6 +24,7 @@ public class ModelMapperConfig {
 					           .departments(request.getDepartments())
 					           .jobStyle(request.getJobStyle())
 					           .birthYear(request.getBirthYear())
+					           .photo(request.getPhoto())
 					           .build();
 		};
 		

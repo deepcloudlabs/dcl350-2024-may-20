@@ -7,18 +7,35 @@ import com.example.hexagon.DTOType;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.FiatCurrency;
 import com.example.hr.domain.JobStyle;
+import com.example.validation.Iban;
+import com.example.validation.TcKimlikNo;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @DTO(DTOType.REQUEST)
 public class HireEmployeeRequest {
+	@TcKimlikNo
 	private String identity;
+	@NotBlank
 	private String firstName;
+	@NotBlank
 	private String lastName;
+	@Min(20_000)
 	private double salary;
+	@NotNull
 	private FiatCurrency currency;
+	@Iban
 	private String iban;
+	@Min(1950) @Max(2010)
 	private int birthYear;
+	@NotNull
 	private JobStyle jobStyle;
+	@NotBlank
 	private String photo;
+	@NotNull
 	private List<Department> departments;
 
 	public final String getIdentity() {

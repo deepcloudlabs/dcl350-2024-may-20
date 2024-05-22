@@ -41,15 +41,15 @@ public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 
 	@Override
 	public Optional<Employee> findEmployeeByIdentity(TcKimlikNo identity) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return employeeEntityRepository.findById(identity.getValue())
+				                       .map(entity -> modelMapper.map(entity,Employee.class));
 	}
 
 	@Override
 	@Transactional
 	public void removeEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-
+		employeeEntityRepository.findById(employee.getIdentity().getValue())
+		                        .ifPresent(employeeEntityRepository::delete);			
 	}
 
 }

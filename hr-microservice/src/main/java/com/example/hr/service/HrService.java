@@ -28,7 +28,7 @@ public class HrService {
 	@Cacheable
 	public EmployeeResponse findById(String identity) {
 		var employee = hrApplication.getEmployee(TcKimlikNo.of(identity))
-				                    .orElseThrow(() -> new IllegalArgumentException("Employee [%s] does not exits!"));
+				                    .orElseThrow(() -> new IllegalArgumentException("Employee [%s] does not exits!".formatted(identity)));
 		return modelMapper.map(employee, EmployeeResponse.class);
 	}
 
