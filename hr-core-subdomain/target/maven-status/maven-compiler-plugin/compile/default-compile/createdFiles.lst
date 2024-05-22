@@ -3,6 +3,7 @@ com\example\hr\domain\Department.class
 com\example\hr\domain\event\HrBaseEvent.class
 com\example\hr\domain\Employee$Builder.class
 com\example\ddd\Entity.class
+com\example\ddd\OHS.class
 com\example\hr\domain\Iban.class
 com\example\hr\domain\FiatCurrency.class
 com\example\hr\domain\Photo.class
@@ -11,13 +12,16 @@ com\example\hexagon\PortType.class
 com\example\hr\domain\Employee.class
 com\example\hr\exercises\Exercise02.class
 com\example\hr\domain\BirthYear.class
+com\example\hexagon\DTO.class
 com\example\ddd\Repository.class
 com\example\ddd\ValueObject.class
 com\example\hr\domain\Money.class
 com\example\hr\domain\Rate.class
 com\example\ddd\DomainEvent.class
+com\example\hexagon\DTOType.class
 com\example\hr\exercises\Exercise01.class
 com\example\hr\domain\JobStyle.class
+com\example\hexagon\Adapter.class
 com\example\hr\domain\event\EmployeeFiredEvent.class
 com\example\hexagon\Port.class
 com\example\hr\infrastructure\messaging\EventPublisher.class

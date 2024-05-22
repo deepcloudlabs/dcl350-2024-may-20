@@ -7,18 +7,29 @@ import com.example.hexagon.DTOType;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.FiatCurrency;
 import com.example.hr.domain.JobStyle;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @DTO(DTOType.RESPONSE)
 public class EmployeeResponse {
+	@JsonProperty("i")
 	private String identity;
+	@JsonProperty("f")
 	private String firstName;
+	@JsonProperty("l")
 	private String lastName;
+	@JsonProperty("s")
 	private double salary;
+	@JsonProperty("c")
 	private FiatCurrency currency;
+	@JsonProperty("b")
 	private String iban;
+	@JsonProperty("y")
 	private int birthYear;
+	@JsonProperty("j")
 	private JobStyle jobStyle;
+	@JsonProperty("p")
 	private String photo;
+	@JsonProperty("d")
 	private List<Department> departments;
 	public final String getIdentity() {
 		return identity;
