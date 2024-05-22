@@ -19,7 +19,7 @@ public class EventPublisherKafkaAdapter implements EventPublisher<HrBaseEvent> {
 	private final ObjectMapper objectMapper;
 	private final String topicName;
 
-	public EventPublisherKafkaAdapter(KafkaTemplate<String, String> kafkaTemplate, @Value("topicName") String topicName,
+	public EventPublisherKafkaAdapter(KafkaTemplate<String, String> kafkaTemplate, @Value("${topicName}") String topicName,
 			ObjectMapper objectMapper) {
 		this.kafkaTemplate = kafkaTemplate;
 		this.objectMapper = objectMapper;

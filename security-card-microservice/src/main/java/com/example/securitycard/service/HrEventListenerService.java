@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class HrEventListenerService {
 
-	@KafkaListener(topics = "hr-events", groupId = "security-card")
+	@KafkaListener(topics = "${topicName}", groupId = "security-card")
 	public void listenHrEvents(String event) {
-		System.err.println("New event has arrived: %s".formatted(event));
+		System.err.println("New event from Kafka has arrived: %s".formatted(event));
 	}
 }

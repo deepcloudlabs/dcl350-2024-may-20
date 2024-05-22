@@ -17,7 +17,7 @@ public class KafkaHrEventListenerService {
 	private final ObjectMapper objectMapper;
 	private final String topicName;
 
-	public KafkaHrEventListenerService(KafkaTemplate<String, String> kafkaTemplate, @Value("topicName") String topicName,
+	public KafkaHrEventListenerService(KafkaTemplate<String, String> kafkaTemplate, @Value("${topicName}") String topicName,
 			ObjectMapper objectMapper) {
 		this.kafkaTemplate = kafkaTemplate;
 		this.objectMapper = objectMapper;
