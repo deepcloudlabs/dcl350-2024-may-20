@@ -1,11 +1,13 @@
 package com.example.hr;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import com.example.hr.domain.JobStyle;
 import com.example.hr.repository.EmployeeEntityRepository;
 
 @Service
+@ConditionalOnProperty(name = "persistence", havingValue = "mysql")
 public class Exercise01 {
 	private final EmployeeEntityRepository employeeEntityRepository;
 
