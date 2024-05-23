@@ -3,8 +3,8 @@ package com.example.hr.infrastructure.adapter;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.ddd.Repository;
 import com.example.hexagon.Adapter;
@@ -17,6 +17,7 @@ import com.example.hr.repository.EmployeeEntityRepository;
 @Service
 @Repository(entity = Employee.class, id = String.class)
 @Adapter(port = EmployeeRepository.class)
+@ConditionalOnProperty(name="persistence", havingValue = "mysql")
 public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	private final EmployeeEntityRepository employeeEntityRepository;
 	private final ModelMapper modelMapper;
@@ -24,6 +25,7 @@ public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	public EmployeeRepositoryJpaAdapter(EmployeeEntityRepository employeeEntityRepository, ModelMapper modelMapper) {
 		this.employeeEntityRepository = employeeEntityRepository;
 		this.modelMapper = modelMapper;
+		System.err.println(employeeEntityRepository.getClass().getName());
 	}
 
 	@Override
@@ -32,7 +34,7 @@ public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Employee persist(Employee employee) {
 		var entity = modelMapper.map(employee, EmployeeEntity.class);
 		var persistedEntity = employeeEntityRepository.save(entity);
@@ -46,7 +48,7 @@ public class EmployeeRepositoryJpaAdapter implements EmployeeRepository {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional
 	public void removeEmployee(Employee employee) {
 		employeeEntityRepository.findById(employee.getIdentity().getValue())
 		                        .ifPresent(employeeEntityRepository::delete);			

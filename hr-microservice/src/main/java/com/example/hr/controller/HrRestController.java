@@ -1,5 +1,6 @@
 package com.example.hr.controller;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +33,7 @@ public class HrRestController {
 	// constructor injection
 	public HrRestController(HrService hrService) {
 		this.hrService = hrService;
+		System.err.println(hrService.getClass().getName());
 	}
 
 	// GET http://localhost:4100/hr/api/v1/employees/11111111110

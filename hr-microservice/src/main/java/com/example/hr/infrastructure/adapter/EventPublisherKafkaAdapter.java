@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hexagon.Adapter;
 import com.example.hr.domain.event.HrBaseEvent;
@@ -27,6 +29,7 @@ public class EventPublisherKafkaAdapter implements EventPublisher<HrBaseEvent> {
 	}
 
 	@Override
+	@Transactional
 	public void publishEvent(HrBaseEvent event) {
 		try {
 			var eventAsJson = objectMapper.writeValueAsString(event);

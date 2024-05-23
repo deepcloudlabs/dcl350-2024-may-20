@@ -1,9 +1,7 @@
 package com.example.hr.service;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.ddd.OHS;
 import com.example.hr.application.HrApplication;
@@ -25,14 +23,14 @@ public class HrService {
 		this.modelMapper = modelMapper;
 	}
 
-	@Cacheable
+	//@Cacheable
 	public EmployeeResponse findById(String identity) {
 		var employee = hrApplication.getEmployee(TcKimlikNo.of(identity))
 				                    .orElseThrow(() -> new IllegalArgumentException("Employee [%s] does not exits!".formatted(identity)));
 		return modelMapper.map(employee, EmployeeResponse.class);
 	}
 
-	@Transactional
+	//@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.MANDATORY)
 	public HireEmployeeResponse hireEmployee(HireEmployeeRequest request) {
 		// object-to-object mapping: HireEmployeeRequest --> Employee
 		var employee = modelMapper.map(request, Employee.class);
@@ -41,7 +39,7 @@ public class HrService {
 		return modelMapper.map(hiredEmployee, HireEmployeeResponse.class);
 	}
 
-	@Transactional
+	//@Transactional
 	public FireEmployeeResponse fireEmployee(String identity) {
 		return modelMapper.map(hrApplication.fireEmployee(TcKimlikNo.of(identity)),FireEmployeeResponse.class);
 	}
