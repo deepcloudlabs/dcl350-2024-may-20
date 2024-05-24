@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "customers")
@@ -11,10 +12,29 @@ public class CustomerDocument {
 	@Id
 	private String identity;
 	private String fullName;
+	@Indexed(unique = true)
+	private String email;
+	private int birthYear;
 	private List<Address> addresses;
 	private List<Phone> phones;
 
 	public CustomerDocument() {
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getBirthYear() {
+		return birthYear;
+	}
+
+	public void setBirthYear(int birthYear) {
+		this.birthYear = birthYear;
 	}
 
 	public String getIdentity() {
