@@ -5,7 +5,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.hr.document.EmployeeDocument;
 import com.example.hr.domain.Employee;
 import com.example.hr.entity.EmployeeEntity;
 
